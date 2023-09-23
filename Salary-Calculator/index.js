@@ -6,7 +6,7 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-rl.question("\nEnter your Basic Salary: ", (salary) => {
+rl.question("\n Enter your Basic Salary: ", (salary) => {
     console.log(getSalary(salary));
     rl.close();
 });
