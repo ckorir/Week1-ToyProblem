@@ -1,11 +1,22 @@
 
 function taxCalculator (basicSalary){
-    const salary = parseInt(basicSalary);
-    const contributionBenefit = 1080;
-    const taxiblePay = salary - contributionBenefit;
+    const salary = parseInt(basicSalary); 
+
+    //function for calculating contribution benefit
+    function contributionBenefit(salary){
+        const contribution = salary * 0.06;
+
+        if (contribution >= 1080){
+            return 1080;
+        } else {
+            return contribution;
+        }
+    }
+    const contributionBenefits = contributionBenefit(salary);
+    const taxiblePay = salary - contributionBenefits;
 
     // A function to calculate the payeRates
-    function payeeRates(salary){
+    function payeeRates(taxiblePay){
 
         // Array of tax rates based on income brackets
         const taxRates = [
@@ -18,13 +29,13 @@ function taxCalculator (basicSalary){
 
         // Checks which range the salary falls
         for (const rate of taxRates) {
-            if (salary >= rate.min && salary <= rate.max) {
-            return salary * rate.rate; // Return the tax rate when the income falls within the specified range
+            if (taxiblePay>= rate.min && taxiblePay <= rate.max) {
+            return taxiblePay * rate.rate; // Return the tax rate when the income falls within the specified range
             }
         }
     
     }
-    const payee = payeeRates(salary); // Allows us to use the variables in the global scope
+    const payee = payeeRates(taxiblePay); // Allows us to use the vaconst contributionBenefit = 1080;riables in the global scope
     //return taxRate;
 
     // function for finding NHIF Deductions
@@ -70,7 +81,7 @@ function taxCalculator (basicSalary){
 
     const netSalary = salary - (payee + nhif + nssf);
 
-    return `\n  Contribution Benefit: ${contributionBenefit}\n   Taxible Pay: ${taxiblePay}\n   Payee: ${payee}\n   NetSalary: ${netSalary}\n`;
+    return `\n  Contribution Benefit: ${contributionBenefits}\n   Taxible Pay: ${taxiblePay}\n   Payee: ${payee}\n   NetSalary: ${netSalary}\n`;
 
 }
 
