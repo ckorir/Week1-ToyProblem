@@ -1,6 +1,6 @@
 function grades (marks){
     const mark = marks;
-
+    //Checks if mark is a number between 0 and 100
     if (!isNaN(mark) && mark >= 0 && mark <= 100){
 
         if (mark > 79){
@@ -15,9 +15,11 @@ function grades (marks){
             return 'E';
         }
     }
+    //Checks if number is below 0 and above 100
     else {
         return "Invalid. Please input value between 0 and 100";
     }
 }
 
+//exports function grades
 module.exports = grades;
