@@ -74,6 +74,6 @@ The tech used for this project include:
 How to run the code
 
 ```sh
-cd Speed-Detector
+cd Salary-Calculator
 node index.js
 ```
